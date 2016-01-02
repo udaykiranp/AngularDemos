@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<title> Directive Types Demo </title>
+	<script type="text/javascript" src="../scripts/jquery-2.1.4.js"></script>
+  <script type="text/javascript" src="../scripts/bootstrap.js"></script>
+  <script type="text/javascript" src="../scripts/angular.js"></script>
+  <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script type="text/javascript" src="app.js"></script>
+  <script type="text/javascript" src="myCtrl.js"></script>
+</head>
+<body ng-controller="myCtrl">
+	<div class="container">
+		<div class="row">
+      <div class="col-xs-12">
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne">
+      <h4 class="panel-title">
+        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Directive as an element attribute
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
+        All the angular directives are declared as element attributes <br>
+        For Example : <mark>ng-click</mark> <mark>ng-controller</mark> <br>
+        <pre>
+          &lt;html ng-app="app"&gt;
+            &lt;body ng-controller="myCtrl"&gt;
+            ........
+            Some html code here
+            .......
+            &lt;/body&gt;
+          &lt;/html&gt;
+        </pre>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingTwo">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Directive as a custom tag
+        </a>
+      </h4>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+      <div class="panel-body">
+        Here we can decalre our own custom angular directive and insert them into html page as an element.<br>
+        To write a custom directive we need to specify in the angular code as <br>
+        <pre>
+          angular.module('your module name').directive('directive name',function(){
+            return{
+                  attributes here ...
+            }
+          });
+          Note : directive name should be 'camelCase' since javascript is case-sensitive
+        </pre><br>
+        For Example :
+        <pre>
+          angular.module('app').directive('studentDetailsCard',function(){
+            return{
+                  attributes here ...
+            }
+          });
+        </pre>
+        At this stage we created a custom direcive named 'studentDetailsCard' with proper naming convention <br>
+        We attach this directive to the module named 'app' <br>
+        We can now specify this directive as an custom directive to an element. <br>
+        <pre>
+          &lt;div student-details-card&gt;....&lt;/div&gt;
+
+          Note: Here html is non case-sensitive so we need to specify the directive as above to get recognized by html.
+        </pre><br>
+        Also we can specify 'x' or 'data' before custom directive and also we can use ('_') - underscore or (':') - colon instead of ('-') - hyphen or even mix them. This is called 'snake casing'<br>
+        <pre>
+          &lt;div data-student:details_card&gt; ... &lt;/div&gt;
+        </pre><br>
+        In the attributes section of the directive we can specift 'template' attribute and sets its value to any html that you want to display when the directive has been included in html element.<br>
+        <pre>
+          angular.module('app').directive('studentDetailsCard',function(){
+            return{
+              template: "Student Details here";
+            }
+          });
+        </pre>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingThree">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Collapsible Group Item #3
+        </a>
+      </h4>
+    </div>
+    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+      <div class="panel-body">
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      </div>
+    </div>
+  </div>
+</div>
+      </div>
+    </div>
+	</div>
+</body>
+</html>

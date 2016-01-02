@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html ng-app="weatherModule">
+
+<head>
+  <script type="text/javascript" src="../scripts/jquery-2.1.4.js"></script>
+  <script type="text/javascript" src="../scripts/bootstrap.js"></script>
+  <script type="text/javascript" src="../scripts/angular.js"></script>
+  <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script type="text/javascript" src="../scripts/Github-Api-Script.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  <script type="text/javascript" src="../scripts/weather-api.js"></script>
+</head>
+
+<body ng-controller="WeatherController">
+  <div class="container">
+    <h2>Forecast Weather API</h2>
+    <hr>
+    <div class="alert alert-danger" role="alert" id="error-alert">
+      <strong>Oops!</strong> Check Again, Input is not correct!.
+    </div>
+    <form>
+      <div class="form-group">
+        <label for="txt_latitude">Latitude</label>
+        <input type="text" class="form-control" id="txt_latitude" placeholder="Enter Latitude" ng-model="latitude">
+      </div>
+      <div class="form-group">
+        <label for="txt_longitude">Longitude</label>
+        <input type="text" class="form-control" id="txt_longitude" placeholder="Enter Longitude" ng-model="longitude">
+      </div>
+      <button class="btn btn-primary" type="button" ng-click="GetWeatherDetails()">Get Weather</button>
+    </form>
+    <hr>
+    <div class="panel panel-success">
+      <div class="panel-heading">
+        Current Weather Details -- {{latitude}},{{longitude}} -- {{weather.timezone}}
+      </div>
+      <div class="panel-body">
+        <table class="table table-striped table-bordered table-hover table-responsive">
+          <tr>
+            <td>Timezone</td>
+            <td>{{weather.timezone}}</td>
+          </tr>
+          
+        </table>
+      </div>
+      <div class="panel-footer">
+        Details from <strong>https://api.forecast.com</strong>
+      </div>
+    </div>
+
+  </div>
+</body>
+
+</html>
